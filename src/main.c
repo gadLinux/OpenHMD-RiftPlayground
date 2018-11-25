@@ -599,7 +599,7 @@ int main(int argc, char** argv)
     uvc_stream_ctrl_t ctrl;
     uvc_device_handle_t *devh;
     struct libusb_device_handle *usb_devh;
-    int ret;
+    unsigned int ret;
 
     bw = blobwatch_new(WIDTH, HEIGHT);
 
@@ -610,8 +610,10 @@ int main(int argc, char** argv)
     res = uvc_init(&ctx, NULL);
     ASSERT_MSG(res >= 0, "could not initalize libuvc\n");
 
-    res = uvc_find_device(ctx, &dev, 0x2833, 0, NULL);
-    ASSERT_MSG(res >= 0, "could not find the camera\n");
+//    res = uvc_find_device(ctx, &dev, 0x2833, 0x0211, NULL);
+    res = uvc_find_device(ctx, &dev,  0x2833, 0x0211, NULL);
+    printf("%x != %x\n", res, UVC_SUCCESS);
+    ASSERT_MSG(res > UVC_SUCCESS, "could not find the camera\n");
 
     res = uvc_open(dev, &devh);
     ASSERT_MSG(res >= 0, "could not open the camera\n");

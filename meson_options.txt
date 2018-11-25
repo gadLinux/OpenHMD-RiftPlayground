@@ -1,0 +1,17 @@
+# TODO: Add descriptions to all of these
+option('enable_tracing', type: 'boolean', value: false)
+option('enable_profiling', type: 'boolean', value: false)
+option('enable_rdtscp', type: 'boolean', value: false,
+  description: 'High performance counters'
+)
+
+option('with_introspection', type: 'boolean')
+option('with_vapi', type: 'boolean')
+option('with_help', type: 'boolean')
+option('with_docs', type: 'boolean')
+
+# Enable/Disable features
+option('with_java', type: 'boolean')
+
+# Build options
+# option('buildtype', type : 'string', value : 'debug' )
